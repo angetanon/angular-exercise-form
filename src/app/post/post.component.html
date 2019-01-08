@@ -1,0 +1,16 @@
+<li [ngClass]="{'list-group-item': getColor() === 'black',
+'list-group-item-success': getColor() === 'green',
+'list-group-item-danger': getColor() === 'red' }">
+  <div class="row">
+    <div class="col-sm-10">
+      <h3 [ngStyle]="{color: getColor()}"> {{postTitle}} </h3>
+    </div>
+    <div class="col-sm-2">
+      <div>{{upDate |date: 'short'}}</div>
+    </div>
+  </div>
+  <p [ngStyle]="{color: getColor()}">{{postContent}}</p>
+  <button class="btn btn-success" (click)="onLoveIt()">Love it!</button>
+  <button class="btn btn-danger offset-md-6" (click)="onDontLoveIt()">Don't love it!</button>
+
+</li>
