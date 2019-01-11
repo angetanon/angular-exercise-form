@@ -9,10 +9,7 @@ export class PostComponent implements OnInit {
 
   @Input() postTitle: string;
   @Input() postContent: string;
-  //@Output() loveIts = new EventEmitter<number>();
-  loveIt = 0;
-  dontLoveIt = 0;
-  loveIts: number;
+  @Input() loveIts: number;
   upDate = new Date();
 
 
@@ -22,34 +19,11 @@ export class PostComponent implements OnInit {
   }
 
   onLoveIt() {
-    this.loveIt += 1;
-    // this.loveIts.emit(this.loveIt);
+    return this.loveIts += 1;
   }
   onDontLoveIt() {
-    this.dontLoveIt -= 1;
-    /// this.loveIts.emit(this.dontLoveIt);
+    return this.loveIts -= 1;
   }
 
-  getColor() {
-    this.loveIts = this.loveIt + this.dontLoveIt;
-    if (this.loveIts > 0) {
-      return 'green';
-    } else if (this.loveIts < 0) {
-      return 'red';
-    } else if (this.loveIts === 0) {
-      return 'black'
-    }
-  }
-
-  getBackGround() {
-    this.loveIts = this.loveIt + this.dontLoveIt;
-    if (this.loveIts > 0) {
-      return 'list-group-item-success';
-    } else if (this.loveIts < 0) {
-      return 'list-group-item-danger';
-    } else if (this.loveIts === 0) {
-      return 'list-group-item'
-    }
-  }
 
 }
