@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 import { PostsService } from '../services/posts.service';
 import { Post } from '../models/post.model';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-post',
@@ -34,14 +35,18 @@ export class PostComponent implements OnInit, OnDestroy {
   onLoveIt() {
     this.loveIts += 1;
     this.posts[this.index].loveIts = this.loveIts;
-    this.posts[this.index].updateDate = new Date();
+    this.posts[this.index].updateDate =  moment().toISOString();
+
+    moment(moment().toISOString())
+
     this.postService.savePosts();
   }
 
   onDontLoveIt() {
     this.loveIts -= 1;
     this.posts[this.index].loveIts = this.loveIts;
-    this.posts[this.index].updateDate = new Date();
+    this.posts[this.index].updateDate = moment().toISOString();
+    moment(moment().toISOString())
     this.postService.savePosts();
   }
 
